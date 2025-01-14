@@ -1,5 +1,12 @@
-import Footer from "./components/Footer";
 import "@mantine/core/styles.css";
+import Footer from "./components/Footer";
+import Publications from "./sections/Publications";
+import About from "./sections/About";
+import Resources from "./sections/Resources";
+import News from "./sections/News";
+import MainVisual from "./sections/MainVisual";
+import Alumni from "./sections/Alumni";
+import Member from "./sections/Member";
 
 export default function App() {
   return (
@@ -10,12 +17,18 @@ export default function App() {
         minHeight: "100vh", 
       }}
     >
-      <main style={{ flex: 1 }}>
-        <h1>Welcome to LOPE Lab</h1>
-        <p>Content goes here...</p>
-      </main>
 
+      <MainVisual/>
+      <News/>
+      <About/>
+      <Resources/>
+      <Member/>
+      <Alumni/>
+      <Publications/>
       <Footer />
+
     </div>
   );
 }
+
+
