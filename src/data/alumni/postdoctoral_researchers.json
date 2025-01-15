@@ -1,32 +1,12 @@
 [
   {
-    "englishName": "John Doe",
-    "chineseName": "約翰·杜",
-    "degree": "M.A. in Linguistics, National Taiwan University, Taiwan"
+    "englishName": "Yu-Hsiang Tseng",
+    "chineseName": "曾昱翔",
+    "degree": "Post-doc researcher, Universität Tübingen"
   },
   {
-    "englishName": "Jane Smith",
-    "chineseName": "簡·史密斯",
-    "degree": "M.A. in Linguistics, National Taiwan University, Taiwan"
-  },
-  {
-    "englishName": "Alan Turing",
-    "chineseName": "艾倫·圖靈",
-    "degree": "M.A. in Linguistics, National Taiwan University, Taiwan"
-  },
-  {
-    "englishName": "Ada Lovelace",
-    "chineseName": "艾達·洛芙萊斯",
-    "degree": "M.A. in Linguistics, National Taiwan University, Taiwan"
-  },
-  {
-    "englishName": "Grace Hopper",
-    "chineseName": "葛麗絲·霍珀",
-    "degree": "M.A. in Linguistics, National Taiwan University, Taiwan"
-  },
-  {
-    "englishName": "Claude Shannon",
-    "chineseName": "克勞德·香農",
-    "degree": "M.A. in Linguistics, National Taiwan University, Taiwan"
+    "englishName": "Chiung-Yu Chiang",
+    "chineseName": "江琼玉",
+    "degree": ""
   }
 ]

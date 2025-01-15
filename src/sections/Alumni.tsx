@@ -40,7 +40,7 @@ export default function Alumni() {
       }}
     >
       <div>
-        {members.slice(0, 5).map((member, index) => (
+        {members.slice(0, 20).map((member, index) => (
           <Text key={index} style={{ marginBottom: "10px" }}>
             <strong>{member.englishName}</strong> | {member.chineseName},{" "}
             {member.degree}
