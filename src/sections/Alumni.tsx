@@ -14,17 +14,14 @@ export default function Alumni() {
 
   useEffect(() => {
     async function fetchData() {
-      // `alumni.json` のデータを読み込む
       const alumniData = await import("../data/alumni/alumni.json");
       setAlumni(alumniData.default);
 
-      // `research_assistants.json` のデータを読み込む
       const researchAssistantsData = await import(
         "../data/alumni/research_assistants.json"
       );
       setResearchAssistants(researchAssistantsData.default);
 
-      // `postdoctoral_researchers.json` のデータを読み込む
       const postdocsData = await import(
         "../data/alumni/postdoctoral_researchers.json"
       );
@@ -42,7 +39,6 @@ export default function Alumni() {
         gap: "20px",
       }}
     >
-      {/* 1列目 */}
       <div>
         {members.slice(0, 5).map((member, index) => (
           <Text key={index} style={{ marginBottom: "10px" }}>
@@ -52,7 +48,6 @@ export default function Alumni() {
         ))}
       </div>
 
-      {/* 2列目 */}
       <div>
         {members.slice(5).map((member, index) => (
           <Text key={index} style={{ marginBottom: "10px" }}>
@@ -74,7 +69,6 @@ export default function Alumni() {
         歷任成員
       </Title>
       <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-        {/* 已畢業成員 */}
         <Title
           align="center"
           order={2}
@@ -84,7 +78,6 @@ export default function Alumni() {
         </Title>
         {renderMembers(alumni)}
 
-        {/* 研究助理＆交換生 */}
         <Title
           align="center"
           order={2}
@@ -98,7 +91,6 @@ export default function Alumni() {
         </Title>
         {renderMembers(researchAssistants)}
 
-        {/* 博士後研究員＆專任助理 */}
         <Title
           align="center"
           order={2}

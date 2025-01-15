@@ -1,28 +1,35 @@
-import { Container, Grid, Card, Text, Title } from "@mantine/core";
+import {
+  Container,
+  Grid,
+  Card,
+  Text,
+  Title,
+  Badge,
+  Group,
+} from "@mantine/core";
+import { useEffect, useState } from "react";
+
+// ニュースアイテムの型定義
+type NewsItem = {
+  date: string;
+  tag: string;
+  status: string;
+  title: string;
+  content: string;
+};
 
 export default function News() {
-  const newsItems = [
-    {
-      title: "New Research Published",
-      description: "Our team has published a new paper on semantic analysis.",
-    },
-    {
-      title: "Workshop Announcement",
-      description: "Join our upcoming workshop on digital humanities tools.",
-    },
-    {
-      title: "Conference Keynote",
-      description: "Prof. X delivered a keynote speech at ABC Conference.",
-    },
-    {
-      title: "Grant Awarded",
-      description: "We received funding for our project on NLP and AI ethics.",
-    },
-    {
-      title: "Collaboration with XYZ Lab",
-      description: "Our lab is collaborating with XYZ Lab on a new project.",
-    },
-  ];
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+
+  useEffect(() => {
+    // JSON データを動的に読み込む
+    async function fetchNews() {
+      const data = await import("../data/news/news.json");
+      setNewsItems(data.default);
+    }
+
+    fetchNews();
+  }, []);
 
   return (
     <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
@@ -37,16 +44,33 @@ export default function News() {
       {/* ニュースアイテム */}
       <Grid gutter="lg">
         {newsItems.map((item, index) => (
-          <Grid.Col key={index} span={{ base: 12, sm: 6, lg: 4 }}>
+          <Grid.Col key={index} span={{ base: 12, sm: 6 }}>
             <Card shadow="sm" padding="lg" radius="md" withBorder>
+              {/* 日付とタグ */}
+              <Group position="apart" style={{ marginBottom: "10px" }}>
+                <Text size="xs" color="dimmed">
+                  {item.date}
+                </Text>
+                <Badge color="blue" variant="light">
+                  {item.tag}
+                </Badge>
+                <Badge
+                  color="green"
+                  variant="outline"
+                  style={{ marginBottom: "10px" }}
+                >
+                  {item.status}
+                </Badge>
+              </Group>
+
               {/* ニュースタイトル */}
               <Text weight={700} size="lg" style={{ marginBottom: "10px" }}>
                 {item.title}
               </Text>
 
-              {/* ニュース説明 */}
+              {/* ニュース内容 */}
               <Text size="sm" color="dimmed">
-                {item.description}
+                {item.content}
               </Text>
             </Card>
           </Grid.Col>

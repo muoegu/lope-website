@@ -5,13 +5,13 @@
     "image": "feature1"
   },
   {
-    "title": "自然語言處理",
-    "description": "對話系統、資訊檢索、知識圖譜建構及社群媒體分析。",
+    "title": "語言認知及計算",
+    "description": "從認知及功能語言學觀點進行自然語言分析和處理。",
     "image": "feature2"
   },
   {
-    "title": "語言認知及計算",
-    "description": "從認知及功能語言學觀點進行自然語言分析和處理。",
+    "title": "自然語言處理",
+    "description": "對話系統、資訊檢索、知識圖譜建立及社群媒體分析、語言及性別、社會等等量化分析。",
     "image": "feature3"
   },
   {

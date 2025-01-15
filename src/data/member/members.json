@@ -1,0 +1,42 @@
+[
+  {
+    "name": "橘内每歌",
+    "year": "Ph.D. Student",
+    "researchField": "研究興趣：計算語言學、語料庫語言學、大型語言模型",
+    "image": "micah",
+    "github": "https://github.com/johndoe",
+    "email": "johndoe@example.com"
+  },
+  {
+    "name": "Jane Smith",
+    "year": "M.A. Student",
+    "researchField": "Syntax and Semantics",
+    "image": "jane_smith",
+    "github": "https://github.com/janesmith",
+    "email": "janesmith@example.com"
+  },
+  {
+    "name": "Alan Turing",
+    "year": "Research Assistant",
+    "researchField": "Machine Translation",
+    "image": "alan_turing",
+    "github": "https://github.com/alanturing",
+    "email": "alanturing@example.com"
+  },
+  {
+    "name": "Alan Turing",
+    "year": "Research Assistant",
+    "researchField": "Machine Translation",
+    "image": "alan_turing1",
+    "github": "https://github.com/alanturing",
+    "email": "alanturing@example.com"
+  },
+  {
+    "name": "Alan Turing",
+    "year": "Research Assistant",
+    "researchField": "Machine Translation",
+    "image": "alan_turing2",
+    "github": "https://github.com/alanturing",
+    "email": "alanturing@example.com"
+  }
+]

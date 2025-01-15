@@ -11,7 +11,6 @@ export default function AdditionalResources() {
   const [tools, setTools] = useState<Tool[]>([]);
 
   useEffect(() => {
-    // JSON データを動的に読み込む
     async function fetchTools() {
       const data = await import("../data/resources/additional_resources.json");
       setTools(data.default);
@@ -22,7 +21,6 @@ export default function AdditionalResources() {
 
   return (
     <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-      {/* セクションタイトル */}
       <Title
         align="center"
         order={1}

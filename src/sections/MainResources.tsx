@@ -1,37 +1,49 @@
 import { Grid, Card, Text, Button, Image } from "@mantine/core";
+import { useEffect, useState } from "react";
+
+// 画像をインポート
+import cwn from "../assets/images/resources/cwn.png";
+import tool2 from "../assets/images/resources/cwn.png";
+import tool3 from "../assets/images/resources/cwn.png";
+
+// リソースの型
+type Resource = {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+};
 
 export default function MainResources() {
-  const resources = [
-    {
-      title: "Resource A",
-      description: "Main resource A description.",
-      image: "/assets/images/resources/cwn.png",
-      link: "https://example.com/resource-a",
-    },
-    {
-      title: "Resource B",
-      description: "Main resource B description.",
-      image: "/assets/images/tool2.png",
-      link: "https://example.com/resource-b",
-    },
-    {
-      title: "Resource B",
-      description: "Main resource B description.",
-      image: "/assets/images/tool2.png",
-      link: "https://example.com/resource-b",
-    },
-  ];
+  const [resources, setResources] = useState<Resource[]>([]);
+
+  // 画像マッピング
+  const imageMap: { [key: string]: string } = {
+    cwn,
+    tool2,
+    tool3,
+  };
+
+  useEffect(() => {
+    // JSON データを動的に読み込む
+    async function fetchResources() {
+      const data = await import("../data/resources/main_resources.json");
+      setResources(data.default);
+    }
+
+    fetchResources();
+  }, []);
 
   return (
     <Grid gutter="lg">
       {resources.map((resource, index) => (
-        <Grid.Col key={index} span={{ base: 12, sm: 6 }}>
+        <Grid.Col key={index} span={{ base: 12, sm: 6, md: 4 }}>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>
               <Image
-                src={resource.image}
+                src={imageMap[resource.image]} // 画像マッピングでパスを取得
                 alt={resource.title}
-                height={160}
+                height={130}
                 fit="cover"
               />
             </Card.Section>
@@ -53,7 +65,7 @@ export default function MainResources() {
               color="blue"
               fullWidth
             >
-              Learn More
+              查看更多
             </Button>
           </Card>
         </Grid.Col>

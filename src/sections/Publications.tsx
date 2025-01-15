@@ -1,4 +1,4 @@
-import { Tabs, Title } from "@mantine/core";
+import { Container, Tabs, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 
 export default function Publications() {
@@ -32,36 +32,38 @@ export default function Publications() {
 
   return (
     <>
-      <Title
-        align="center"
-        order={2}
-        style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-      >
-        研究成果
-      </Title>
-      {years.length > 0 && (
-        <Tabs variant="outline" defaultValue={years[0]}>
-          {/* タブリスト */}
-          <Tabs.List>
-            {years.map((year) => (
-              <Tabs.Tab key={year} value={year}>
-                {year}
-              </Tabs.Tab>
-            ))}
-          </Tabs.List>
+      <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
+        <Title
+          align="center"
+          order={2}
+          style={{ fontSize: "2.5rem", marginBottom: "20px" }}
+        >
+          研究成果
+        </Title>
+        {years.length > 0 && (
+          <Tabs variant="outline" defaultValue={years[0]}>
+            {/* タブリスト */}
+            <Tabs.List>
+              {years.map((year) => (
+                <Tabs.Tab key={year} value={year}>
+                  {year}
+                </Tabs.Tab>
+              ))}
+            </Tabs.List>
 
-          {/* 各年のデータ */}
-          {years.map((year) => (
-            <Tabs.Panel key={year} value={year}>
-              <ul>
-                {data[year].map((item, index) => (
-                  <li key={index}>{item.title}</li>
-                ))}
-              </ul>
-            </Tabs.Panel>
-          ))}
-        </Tabs>
-      )}
+            {/* 各年のデータ */}
+            {years.map((year) => (
+              <Tabs.Panel key={year} value={year}>
+                <ul>
+                  {data[year].map((item, index) => (
+                    <li key={index}>{item.title}</li>
+                  ))}
+                </ul>
+              </Tabs.Panel>
+            ))}
+          </Tabs>
+        )}
+      </Container>
     </>
   );
 }
