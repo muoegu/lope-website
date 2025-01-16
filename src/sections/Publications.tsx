@@ -31,11 +31,7 @@ export default function Publications() {
   return (
     <>
       <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-        <Title
-            order={1}
-            align="center"
-            m={"xl"}
-        >
+        <Title order={1} align="center" m={"xl"}>
           研究成果
         </Title>
         {years.length > 0 && (
@@ -52,7 +48,11 @@ export default function Publications() {
               <Tabs.Panel key={year} value={year}>
                 <ul>
                   {data[year].map((item, index) => (
-                    <li key={index}>{item.title}</li>
+                    <li
+                      key={index}
+                      style={{ marginBottom: "10px" }}
+                      dangerouslySetInnerHTML={{ __html: item.title }}
+                    />
                   ))}
                 </ul>
               </Tabs.Panel>

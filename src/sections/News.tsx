@@ -61,13 +61,13 @@ export default function News() {
                 <Badge color="blue" variant="light">
                   {item.tag}
                 </Badge>
-                <Badge
+                {/* <Badge
                   color="green"
                   variant="outline"
                   style={{ marginBottom: "10px" }}
                 >
                   {item.status}
-                </Badge>
+                </Badge> */}
               </Group>
 
               <Text weight={700} size="lg" style={{ marginBottom: "10px" }}>
