@@ -31,75 +31,57 @@ export default function Alumni() {
     fetchData();
   }, []);
 
-  const renderMembers = (members: Member[]) => (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "20px",
-      }}
-    >
-      <div>
-        {members.slice(0, 20).map((member, index) => (
-          <Text key={index} style={{ marginBottom: "10px" }}>
-            <strong>{member.englishName}</strong> | {member.chineseName},{" "}
-            {member.degree}
-          </Text>
-        ))}
-      </div>
+  const renderMembers = (members: Member[]) => {
+    const halfIndex = Math.ceil(members.length / 2);
+    const firstColumn = members.slice(0, halfIndex);
+    const secondColumn = members.slice(halfIndex);
 
-      <div>
-        {members.slice(5).map((member, index) => (
-          <Text key={index} style={{ marginBottom: "10px" }}>
-            <strong>{member.englishName}</strong> | {member.chineseName},{" "}
-            {member.degree}
-          </Text>
-        ))}
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+        }}
+      >
+        <div>
+          {firstColumn.map((member, index) => (
+            <Text key={index} style={{ marginBottom: "10px" }}>
+              <strong>{member.englishName}</strong> | {member.chineseName},{" "}
+              {member.degree}
+            </Text>
+          ))}
+        </div>
+
+        <div>
+          {secondColumn.map((member, index) => (
+            <Text key={index} style={{ marginBottom: "10px" }}>
+              <strong>{member.englishName}</strong> | {member.chineseName},{" "}
+              {member.degree}
+            </Text>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <>
-      <Title
-        align="center"
-        order={1}
-        style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-      >
+      <Title order={1} align="center" mt={"xl"}>
         歷任成員
       </Title>
       <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-        <Title
-          align="center"
-          order={2}
-          style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-        >
+        <Title order={2} align="center" m={"xl"}>
           已畢業成員
         </Title>
         {renderMembers(alumni)}
 
-        <Title
-          align="center"
-          order={2}
-          style={{
-            fontSize: "2.5rem",
-            marginBottom: "20px",
-            marginTop: "40px",
-          }}
-        >
+        <Title order={2} align="center" m={"xl"}>
           研究助理＆交換生
         </Title>
         {renderMembers(researchAssistants)}
 
-        <Title
-          align="center"
-          order={2}
-          style={{
-            fontSize: "2.5rem",
-            marginBottom: "20px",
-            marginTop: "40px",
-          }}
-        >
+        <Title order={2} align="center" m={"xl"}>
           博士後研究員＆專任助理
         </Title>
         {renderMembers(postdocs)}

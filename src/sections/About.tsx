@@ -2,11 +2,10 @@ import { Title, Text, Container, Grid, Group, Image } from "@mantine/core";
 import { useEffect, useState } from "react";
 
 import feature1 from "../assets/images/about/feature1.png";
-import feature2 from "../assets/images/about/feature1.png";
-import feature3 from "../assets/images/about/feature1.png";
-import feature4 from "../assets/images/about/feature1.png";
+import feature2 from "../assets/images/about/feature2.png";
+import feature3 from "../assets/images/about/feature3.png";
+import feature4 from "../assets/images/about/feature4.png";
 
-// JSON の型定義
 type Feature = {
   title: string;
   description: string;
@@ -16,7 +15,6 @@ type Feature = {
 export default function About() {
   const [features, setFeatures] = useState<Feature[]>([]);
 
-  // 画像マッピング
   const imageMap: { [key: string]: string } = {
     feature1,
     feature2,
@@ -25,7 +23,6 @@ export default function About() {
   };
 
   useEffect(() => {
-    // JSON データを動的に読み込む
     async function fetchFeatures() {
       const data = await import("../data/about/features.json");
       setFeatures(data.default);
@@ -36,15 +33,11 @@ export default function About() {
 
   return (
     <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-      <Title
-        align="center"
-        order={2}
-        style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-      >
+      <Title order={1} align="center" m={"xl"}>
         關於LOPE
       </Title>
 
-      <Text  size="lg" style={{ marginBottom: "40px" }}>
+      <Text size="lg" style={{ marginBottom: "40px" }}>
         LOPE (Lab of Ontologies, Language Processing, and e-Humanities)
         實驗室是由謝舒凱老師在 2007 年起創立的研究團隊，
         期待以其中世紀原意「大步慢走」('walk with a long bounding stride')
@@ -60,7 +53,7 @@ export default function About() {
           <Grid.Col key={index} span={{ base: 12, md: 6 }}>
             <Group align="flex-start" spacing="md" style={{ padding: "10px" }}>
               <Image
-                src={imageMap[feature.image]} // マッピングされた画像パスを取得
+                src={imageMap[feature.image]}
                 alt={feature.title}
                 width={50}
                 height={50}

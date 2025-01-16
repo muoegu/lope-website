@@ -5,11 +5,7 @@ import MainResources from "./MainResources";
 export default function Resources() {
   return (
     <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-      <Title
-        align="center"
-        order={2}
-        style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-      >
+      <Title order={1} align="center" m={"xl"}>
         實驗室資源與工具
       </Title>
 

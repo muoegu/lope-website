@@ -6,7 +6,6 @@ export default function Publications() {
   const [years, setYears] = useState<string[]>([]);
 
   useEffect(() => {
-    // データの動的ロード
     async function fetchData() {
       const context = import.meta.glob("../data/publications/*.json");
       const loadedData: { [key: string]: any[] } = {};
@@ -21,7 +20,6 @@ export default function Publications() {
         }
       }
 
-      // 年代順にソート
       loadedYears.sort((a, b) => Number(b) - Number(a));
       setData(loadedData);
       setYears(loadedYears);
@@ -34,15 +32,14 @@ export default function Publications() {
     <>
       <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
         <Title
-          align="center"
-          order={2}
-          style={{ fontSize: "2.5rem", marginBottom: "20px" }}
+            order={1}
+            align="center"
+            m={"xl"}
         >
           研究成果
         </Title>
         {years.length > 0 && (
           <Tabs variant="outline" defaultValue={years[0]}>
-            {/* タブリスト */}
             <Tabs.List>
               {years.map((year) => (
                 <Tabs.Tab key={year} value={year}>
@@ -51,7 +48,6 @@ export default function Publications() {
               ))}
             </Tabs.List>
 
-            {/* 各年のデータ */}
             {years.map((year) => (
               <Tabs.Panel key={year} value={year}>
                 <ul>

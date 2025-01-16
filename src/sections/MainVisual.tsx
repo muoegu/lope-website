@@ -34,24 +34,24 @@ export default function MainVisual() {
 
       <Container>
         <Center>
-          <Title
-            order={1}
-            style={{ fontSize: "2.5rem", marginBottom: "10px", color: "white" }}
-          >
+          <Text size="50px" c={"white"} m={"lg"} fw={500}>
             知識本體、語言處理與人文計算實驗室
-          </Title>
+          </Text>
         </Center>
 
         <Center>
-          <Text size="lg" style={{ marginBottom: "20px", color: "white" }}>
+          <Text
+            size="40px"
+            fw={500}
+            style={{ marginBottom: "20px", color: "white" }}
+          >
             @ 台大語言學研究所
           </Text>
         </Center>
 
-        {/* 詳細説明 */}
         <Center>
           <Text
-            size="md"
+            size="30px"
             style={{ maxWidth: "800px", lineHeight: 1.5, color: "white" }}
           >
             <span style={{ color: "#FF6F00", fontWeight: "bold" }}>L</span>ab of{" "}

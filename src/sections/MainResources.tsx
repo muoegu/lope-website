@@ -1,12 +1,13 @@
 import { Grid, Card, Text, Button, Image } from "@mantine/core";
 import { useEffect, useState } from "react";
 
-// 画像をインポート
-import cwn from "../assets/images/resources/cwn.png";
-import tool2 from "../assets/images/resources/cwn.png";
-import tool3 from "../assets/images/resources/cwn.png";
+import cwn from "../assets/images/resources/main_resources/cwn.png";
+import moco from "../assets/images/resources/main_resources/moco.png";
+import ptt_corp from "../assets/images/resources/main_resources/ptt_corp.png";
+import chi_var from "../assets/images/resources/main_resources/chi-var.png";
+import lopotator from "../assets/images/resources/main_resources/lopotator.png";
+import cwm from "../assets/images/resources/main_resources/cwm.png";
 
-// リソースの型
 type Resource = {
   title: string;
   description: string;
@@ -17,15 +18,16 @@ type Resource = {
 export default function MainResources() {
   const [resources, setResources] = useState<Resource[]>([]);
 
-  // 画像マッピング
   const imageMap: { [key: string]: string } = {
     cwn,
-    tool2,
-    tool3,
+    moco,
+    ptt_corp,
+    chi_var,
+    lopotator,
+    cwm
   };
 
   useEffect(() => {
-    // JSON データを動的に読み込む
     async function fetchResources() {
       const data = await import("../data/resources/main_resources.json");
       setResources(data.default);
@@ -41,7 +43,7 @@ export default function MainResources() {
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>
               <Image
-                src={imageMap[resource.image]} // 画像マッピングでパスを取得
+                src={imageMap[resource.image]} 
                 alt={resource.title}
                 height={130}
                 fit="cover"

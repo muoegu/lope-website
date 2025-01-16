@@ -6,10 +6,10 @@ import {
   Title,
   Badge,
   Group,
+  Modal,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 
-// ニュースアイテムの型定義
 type NewsItem = {
   date: string;
   tag: string;
@@ -20,9 +20,10 @@ type NewsItem = {
 
 export default function News() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [opened, setOpened] = useState(false); 
+  const [currentNews, setCurrentNews] = useState<NewsItem | null>(null);
 
   useEffect(() => {
-    // JSON データを動的に読み込む
     async function fetchNews() {
       const data = await import("../data/news/news.json");
       setNewsItems(data.default);
@@ -31,22 +32,28 @@ export default function News() {
     fetchNews();
   }, []);
 
+  const handleCardClick = (newsItem: NewsItem) => {
+    setCurrentNews(newsItem);
+    setOpened(true);
+  };
+
   return (
     <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-      <Title
-        align="center"
-        order={2}
-        style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-      >
+      <Title order={1} align="center" m={"xl"}>
         最新消息
       </Title>
 
-      {/* ニュースアイテム */}
       <Grid gutter="lg">
         {newsItems.map((item, index) => (
           <Grid.Col key={index} span={{ base: 12, sm: 6 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder>
-              {/* 日付とタグ */}
+            <Card
+              shadow="sm"
+              padding="lg"
+              radius="md"
+              withBorder
+              onClick={() => handleCardClick(item)}
+              style={{ cursor: "pointer" }}
+            >
               <Group position="apart" style={{ marginBottom: "10px" }}>
                 <Text size="xs" color="dimmed">
                   {item.date}
@@ -63,19 +70,45 @@ export default function News() {
                 </Badge>
               </Group>
 
-              {/* ニュースタイトル */}
               <Text weight={700} size="lg" style={{ marginBottom: "10px" }}>
                 {item.title}
               </Text>
 
-              {/* ニュース内容 */}
-              <Text size="sm" color="dimmed">
-                {item.content}
-              </Text>
+              <Text
+                size="sm"
+                color="dimmed"
+                lineClamp={2}
+                dangerouslySetInnerHTML={{ __html: item.content }}
+              />
             </Card>
           </Grid.Col>
         ))}
       </Grid>
+
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title={currentNews?.title}
+      >
+        {currentNews && (
+          <>
+            <Text size="sm" color="dimmed" style={{ marginBottom: "10px" }}>
+              {currentNews.date}
+            </Text>
+            <Badge color="blue" variant="light">
+              {currentNews.tag}
+            </Badge>
+            <Text size="sm" style={{ marginBottom: "10px" }}>
+              <strong>Status:</strong> {currentNews.status}
+            </Text>
+
+            <Text
+              size="sm"
+              dangerouslySetInnerHTML={{ __html: currentNews.content }}
+            />
+          </>
+        )}
+      </Modal>
     </Container>
   );
 }

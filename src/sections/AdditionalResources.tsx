@@ -21,11 +21,7 @@ export default function AdditionalResources() {
 
   return (
     <Container style={{ marginTop: "40px", marginBottom: "40px" }}>
-      <Title
-        align="center"
-        order={1}
-        style={{ fontSize: "2.5rem", marginBottom: "20px" }}
-      >
+      <Title order={2} align="center" m={"xl"}>
         學習共筆與開放課程、工作坊
       </Title>
 
